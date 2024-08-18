@@ -1,0 +1,42 @@
+# QUARKUS_HTTP_PORT=9090
+
+version: '3'
+services:
+  load_balancer:
+    image:  quarkus/loadbalancer-jvm
+    # add container1 configuration here
+    networks:
+      - sharednetwork
+    environment:
+      - QUARKUS_HTTP_PORT=8079
+    ports:
+      - 8079:8079
+
+  server1:
+    image: quarkus/demo-jvm
+    # add container2 configuration here
+    networks:
+      - sharednetwork
+    environment:
+      - QUARKUS_HTTP_PORT=8080
+
+  server2:
+    image: quarkus/demo-jvm
+    # add container3 configuration here
+    networks:
+      - sharednetwork
+    environment:
+      - QUARKUS_HTTP_PORT=8081
+
+  server3:
+    image: quarkus/demo-jvm
+    # add container4 configuration here
+    networks:
+      - sharednetwork
+    environment:
+      - QUARKUS_HTTP_PORT=8082
+
+
+networks:
+  sharednetwork:
+    driver: bridge

@@ -1,0 +1,10 @@
+###
+POST http://localhost:8079/gamer/game_points
+Content-Type: application/json
+
+{
+  "game": "Left for Dead",
+  "gamerId": "123",
+  "points": 123
+}
+
